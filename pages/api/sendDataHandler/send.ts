@@ -34,7 +34,7 @@ export default async function send( req: NextApiRequest,res: NextApiResponse) {
         mode: "cors",
         method: 'POST',
         headers: {
-            'Authorization': `Bearer AelziCHTXtljnifTW1cJ8OFjzhoCSK7w8x8QpXecA3K`,
+            'Authorization': `Bearer ${process.env.LINE_TOKEN}`,
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: msg,
