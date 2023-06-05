@@ -9,6 +9,7 @@ import { FiLink } from 'react-icons/fi'
 import jwtDecode from "jwt-decode";
 import { studentData, loginData } from "@/src/libs/interface"
 import getData from "@/src/libs/getData"
+import PageContainer from "@/src/components/container/PageContainer";
 
 export default function Dashboard() {
     const router: NextRouter = useRouter()
@@ -59,7 +60,7 @@ export default function Dashboard() {
     }
     
     return (
-        <>
+        <PageContainer title="Home" description="Home Page">
             <p className="text-gray-700 text-3xl mb-16 font-bold">Home</p>
             <div>
                 <div className="grid lg:grid-cols-3 gap-5 mb-16">
@@ -102,7 +103,7 @@ export default function Dashboard() {
                 <div className="mt-1 ml-9 text-lg">
                 ⤷ Release Full Version
                 </div>
-            </div>           
-        </>
+            </div>    
+        </PageContainer>
     )
 }

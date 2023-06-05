@@ -51,6 +51,8 @@ const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
             title: title,
             icon: icon,
         })
+
+        router.reload()
     }
 
     const leave = async () => {

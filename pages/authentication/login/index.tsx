@@ -5,6 +5,7 @@ import { FcLock } from 'react-icons/fc'
 import checkA from "@/src/libs/checkAuth"
 import Swal from "sweetalert2"
 import { hasCookie } from "cookies-next"
+import PageContainer from "@/src/components/container/PageContainer"
 
 export default function LoginPage() {
     const router: AppRouterInstance = useRouter()
@@ -62,7 +63,7 @@ export default function LoginPage() {
     }
 
     return (
-        <>
+        <PageContainer title="Login" description="Authentication System">
             <div className="">
                 <div className="flex flex-col items-center justify-center px-16 py-8 mx-auto md:h-screen">
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -91,8 +92,7 @@ export default function LoginPage() {
                     </div>
                 </div>  
             </div>
-
-        </>
+        </PageContainer>
       )
 }
 

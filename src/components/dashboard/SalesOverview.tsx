@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import DashboardCard from '../../../src/components/shared/DashboardCard';
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
+interface usetage {
+    month: number[],
+    total: number[]
+}
 
 const SalesOverview = () => {
 
     // select
     const [month, setMonth] = React.useState('1');
+
+    const [use, setUse] = React.useState<usetage>({
+        month: [],
+        total: []
+    })
 
     const handleChange = (event: any) => {
         setMonth(event.target.value);
@@ -79,35 +88,35 @@ const SalesOverview = () => {
         },
     };
 
+    const getD = async () => {
+        const res = await fetch("/api/user/getUsetageByYear")
+        const data = await res.json()
 
+        setUse({
+            month: data.month,
+            total: data.total
+        })
+    }
+
+    useEffect(() => {
+        getD()
+    })
     
 
     const seriescolumnchart: any[] = [
         {
             name: 'Month Use',
-            data: [1, 2, 3, 4, 5, 3],
+            data: use.month,
         },
         {
             name: 'All use',
-            data: [0, 15, 13, 25, 0, 1],
+            data: use.total,
         },
     ];
 
     return (
 
-        <DashboardCard title="Usetage Overview" action={
-            <Select
-                labelId="month-dd"
-                id="month-dd"
-                value={month}
-                size="small"
-                onChange={handleChange}
-            >
-                <MenuItem value={1}>March 2023</MenuItem>
-                <MenuItem value={2}>April 2023</MenuItem>
-                <MenuItem value={3}>May 2023</MenuItem>
-            </Select>
-        }>
+        <DashboardCard title="ภาพรวมการใช้งาน">
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}

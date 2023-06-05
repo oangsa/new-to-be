@@ -31,7 +31,7 @@ const RecentTransactions = () => {
   }, [])
 
   return (
-    <DashboardCard title="Recent Usetage">
+    <DashboardCard title="การเข้าใช้งานล่าสุด">
       <>
         <Timeline
           className="theme-timeline"

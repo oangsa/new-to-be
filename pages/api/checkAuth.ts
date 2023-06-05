@@ -22,7 +22,7 @@ export default async function checkAuth(req: NextApiRequest, res: NextApiRespons
         if (username === "admin" && password === "password") isAdmin = true
 
         const result = await Note.findOne({"loginData.username": username, "loginData.password": password})
-        
+
         if (result === null) return res.status(400).send({message: "User is not valid."})
 
         const token = await new SignJWT({})
