@@ -21,16 +21,26 @@ export default async function send( req: NextApiRequest,res: NextApiResponse) {
 
   try {
     connectMongo()
-
     const check = await Note.findOne({"studentData.name": name, "studentData.surname": surname})
+    const msg = `message=\n${name} ${surname} ได้เข้าใช้ศูนย์เพื่อนใจ\nเพราะ: ${other}\nเวลา: ${`${new Date(check.studentData.timestamps).toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[0]}:${new Date(check.studentData.timestamps).toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[1]}`} น.`;
 
     if ( check == null ) return res.status(201).send({ message: "Student is not valid!" })
-
-    console.log(check)
 
     await Note.updateOne({"studentData.name" : name, "studentData.surname" : surname}, 
         {$set: {"studentData.reason": other, "studentData.total": check.studentData.total + 1, 
                 "studentData.oldMonth": check.studentData.total + 1, "studentData.timestamps": new Date()}})
+
+    const response = await fetch("https://notify-api.line.me/api/notify", {
+        mode: "cors",
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer AelziCHTXtljnifTW1cJ8OFjzhoCSK7w8x8QpXecA3K`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: msg,
+    });
+
+    console.log(response.text)
     
     const Data = await Usetage.find({})
 
