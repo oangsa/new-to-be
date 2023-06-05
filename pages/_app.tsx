@@ -16,7 +16,7 @@ import { baselightTheme } from "../src/theme/DefaultColors";
 import Layout from "../src/components/sidebar/Layout"
 
 import "../styles/globals.css"
-
+import Footer from "@/src/components/footer/footer";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -42,15 +42,19 @@ const MyApp = (props: MyAppProps) => {
         <CacheProvider value={emotionCache}>
           <Head>
             <meta name="viewport" content="initial-scale=1, width=device-width" />
-            <title>Modernize NextJs Free Admin template</title>
+            <title>To Be Number One Rachasima Witthayalai School</title>
           </Head>
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            {getLayout(<Component {...pageProps} />)}
+            {getLayout
+            ( 
+              <Component {...pageProps} />
+            )}
           </ThemeProvider>
         </CacheProvider>
       </Layout>
+      <Footer/>
     </div>
   );
 };

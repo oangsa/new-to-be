@@ -52,7 +52,6 @@ const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
             icon: icon,
         })
 
-        router.reload()
     }
 
     const leave = async () => {
@@ -87,8 +86,9 @@ const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
         }).then(async (result) => {
             
             if (result.isConfirmed) {
-                if (!leave()) return swalFunc({title:"ไม่สำเร็จ", icon:"error"})
-                else return swalFunc({title:"สำเร็จ", icon:"success"})
+                if (!leave() || data.other === "") return swalFunc({title:"ไม่สำเร็จ", icon:"error"})
+                swalFunc({title:"สำเร็จ", icon:"success"})
+                return router.reload()
             }
         })
 
