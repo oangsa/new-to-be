@@ -48,9 +48,9 @@ export default function LoginPage() {
                 
                 Swal.showLoading()
 
-                if (await checkA(data.username, data.password)) return setTimeout(swalSuccess, 2000);
+                if (await checkA(data.username, data.password)) return setTimeout(swalSuccess, 500);
 
-                return setTimeout(swalError, 1500);
+                return setTimeout(swalError, 500);
 
             },
         })

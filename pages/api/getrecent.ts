@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connectMongo from '@/src/libs/connectMongo'
 import Note from '@/src/models/schemas'

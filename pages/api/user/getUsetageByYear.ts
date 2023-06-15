@@ -5,7 +5,6 @@ import Note from '@/src/models/schemas'
 
 export default async function getUsetageByYear(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "GET") return res.status(405).send({message: "Only GET method is allowed!"})
-    var start: number = 1
     var data: any = {
         month: [],
         total: []

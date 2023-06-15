@@ -22,7 +22,7 @@ const RecentTransactions = () => {
     const d = await res.json()
     
     setData(d)
-}
+  }
 
   useEffect(() => {
       

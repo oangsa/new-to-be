@@ -22,7 +22,7 @@ export default async function send( req: NextApiRequest,res: NextApiResponse) {
   try {
     connectMongo()
     const check = await Note.findOne({"studentData.name": name, "studentData.surname": surname})
-    const msg = `message=\n${name} ${surname} ได้เข้าใช้ศูนย์เพื่อนใจ\nเพราะ: ${other}\nเวลา: ${`${new Date(check.studentData.timestamps).toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[0]}:${new Date(check.studentData.timestamps).toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[1]}`} น.`;
+    const msg = `message=\n${name} ${surname} ได้เข้าใช้ศูนย์เพื่อนใจ\nเพราะ: ${other}\nเวลา: ${`${new Date().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[0]}:${new Date().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"}).split(" ")[1].split(":")[1]}`} น.`;
 
     if ( check == null ) return res.status(201).send({ message: "Student is not valid!" })
 
