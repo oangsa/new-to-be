@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         const goShit = () => {
-            return process.env.NODE_ENV === 'development' ?  "" : !hasCookie("user-token") ? "" : router.push("/dashboard")
+            return process.env.NODE_ENV === 'development' ?  "" : !hasCookie("user-token") ? "" : router.push("/")
         }
         goShit()
     })
