@@ -75,6 +75,7 @@ const MonthlyEarnings = () => {
   useEffect(() => {
       getD()
   })
+  
   const more = data.oldData.Day === 0 ? 1 : data.oldData.Day
   const less = data.currentData.Day === 0 ? 1 : data.currentData.Day
   return (

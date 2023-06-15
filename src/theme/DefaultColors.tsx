@@ -1,5 +1,9 @@
 import { createTheme } from "@mui/material/styles";
-
+import { Kanit } from 'next/font/google';
+const kanit = Kanit({
+  weight: ['400'],
+  subsets: ['latin', 'thai'],
+});
 const baselightTheme = createTheme({
   direction: "ltr",
   palette: {

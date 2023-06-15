@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import Logo from "../../../public/Logo.png"
 import Link from "next/link";
-import { HomeIcon, ListBulletIcon, ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, CodeBracketSquareIcon } from "@heroicons/react/24/solid";
+import { HomeIcon, ListBulletIcon, ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, CodeBracketSquareIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { getCookie, deleteCookie  } from "cookies-next";
@@ -83,17 +83,35 @@ const SideBar = forwardRef(({ showNav }: any, Ref:any) => {
                     </Link></> : ""
             }
 
-            {hasCookie === true ? 
-                <div onClick={loginLogoutHandle}>
-                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors text-red-500 bg-red-100 hover:bg-red-200 hover:text-red-600 `}>
-                    <div className="mr-2">
-                        <ArrowLeftOnRectangleIcon className="h-5 w-5" />
+            {hasCookie === true ?
+                <>
+                    <Link href="/settings">
+                        <div
+                        className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+                            router.pathname == "/settings"
+                            ? "bg-orange-100 text-orange-500"
+                            : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+                        }`}
+                        >
+                        <div className="mr-2">
+                            <Cog6ToothIcon className="h-5 w-5" />
+                        </div>
+                        <div>
+                            <p>Settings</p>
+                        </div>
+                        </div>
+                    </Link> 
+                    <div onClick={loginLogoutHandle}>
+                        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors text-red-500 bg-red-100 hover:bg-red-200 hover:text-red-600 `}>
+                        <div className="mr-2">
+                            <ArrowLeftOnRectangleIcon className="h-5 w-5" />
+                        </div>
+                        <div>
+                            <p>Logout</p>
+                        </div>
+                        </div>
                     </div>
-                    <div>
-                        <p>Logout</p>
-                    </div>
-                    </div>
-                </div>
+                </>
             :
                 <div onClick={loginLogoutHandle}>
                     <div

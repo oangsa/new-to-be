@@ -30,14 +30,14 @@ export const DevTeamModal = () => {
             </Modal.Header>
             <Modal.Body>
                 <div className="space-y-6">
-                <p className="items-center text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    <p className="flex items-center mb-3">
-                        <FaCrown className="mr-2"/>สุธางค์ สุขเรืองกูล <FaAngleRight className="mr-2 ml-3"/> Web Designer & Backend Developer
+                <p className="lg:text-lg md:text-md sm:text-sx items-center text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    <p className="lg:text-lg md:text-md sm:text-sx flex items-center mb-3">
+                        <FaCrown className="mr-1"/>สุธางค์ สุขเรืองกูล <FaAngleRight className="mr-2 ml-3"/> Head Developer
                     </p>
-                    <p className="flex items-center  mb-3">
+                    <p className="lg:text-lg md:text-md sm:text-sx flex items-center mb-3">
                         ❤  ณัฐดนัย มักเจริญผล <FaAngleRight className="mr-2 ml-3"/> Data Handler
                     </p>
-                    <p className="flex items-center">
+                    <p className="lg:text-lg md:text-md sm:text-sx flex items-center">
                         ❤  เจตนิพัทธ์ อัครเดชาเกียรติ <FaAngleRight className="mr-2 ml-3"/> Data Handler
                     </p>
                 </p>

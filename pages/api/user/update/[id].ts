@@ -23,8 +23,8 @@ export default async function update( req: NextApiRequest, res: NextApiResponse 
         const check:any[] = await Note.find({"loginData.username" : username})  
         const oldData:any = await Note.findOne({"studentData.studentId" : id})
         
-        if ( check.length > 0 && isUserUpdate === 'false') var pass = !(check[0].loginData.username === username && oldData.loginData.username !== username)
-        else if ( check.length > 0 && isUserUpdate === 'true' ) var pass = false
+        if ( check.length > 1 && isUserUpdate === 'false') var pass = !(check[0].loginData.username === username && oldData.loginData.username !== username)
+        else if ( check.length > 1 && isUserUpdate === 'true' ) var pass = false
         else var pass = true
         
         if ( !pass ) return res.status(202).send({message: "Username is already taken."})

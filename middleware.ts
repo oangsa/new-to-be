@@ -14,6 +14,7 @@ export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
     if (!verifyToken && pathname === "/") return NextResponse.redirect(new URL('/authentication/login', req.url))
+    if (!verifyToken && pathname === "/settings") return NextResponse.redirect(new URL('/authentication/login', req.url))
     
     if (!verifyToken && pathname.includes('/admin') && !tokenData?.isAdmin ) return NextResponse.redirect(new URL('/authentication/login', req.url))
     

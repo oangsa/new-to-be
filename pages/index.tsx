@@ -33,7 +33,7 @@ export default function Dashboard() {
     const data = async () => {
         const cookie: any = getCookie("user-token")
         const token: any = jwtDecode(cookie, {header: true})
-        const data: Promise<student> = getData(token.username, token.password)
+        const data: Promise<student> = getData(token.studentId)
         const [Student] = await Promise.all([data])
         
         setStudentData(Student.studentData)
@@ -98,10 +98,13 @@ export default function Dashboard() {
             <div className="rounded bg-white h-96 shadow-sm">
                 <div className="inline-flex items-center justify-center mt-4 ml-4 text-lg">
                     <div className="text-red-700">[</div><div className="text-blue-700">LOG</div><div className="text-red-700">]</div><div className="mr-1">:</div>
-                    Update 1.0
+                    Update 1.1
                 </div>
                 <div className="mt-1 ml-9 text-lg">
-                ⤷ Release Full Version
+                ⤷ เพิ่มเมนูการตั้งค่า
+                </div>
+                <div className="mt-1 ml-9 text-lg">
+                ⤷ แก้ปัญหาเรื่องเวลาในไลน์
                 </div>
             </div>    
         </PageContainer>
