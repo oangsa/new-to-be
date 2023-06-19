@@ -68,8 +68,8 @@ export default function LoginPage() {
                 <div className="flex flex-col items-center justify-center px-16 py-8 mx-auto md:h-screen">
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <h1 className="items-center flex text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                <FcLock className="mr-1"></FcLock>เข้าสู่ระบบ
+                            <h1 className="items-center flex lg:text-sm md:text-sm sm:text-xs font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+                                📝 ลงทะเบียนเข้าใช้งานศูนย์เพื่อนใจ TO BE NUMBER ONE R.S
                             </h1>
                             <p className="text-red-500">
                                 *ชื่อผู้ใช้และรหัสผ่าน ใช้เลขประจำตัวนักเรียน ถ้าไม่ได้ให้ใส่ชื่อแทน*

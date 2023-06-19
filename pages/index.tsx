@@ -61,7 +61,7 @@ export default function Dashboard() {
     
     return (
         <PageContainer title="Home" description="Home Page">
-            <p className="text-gray-700 text-3xl mb-16 font-bold">Home</p>
+            <p className="text-gray-700 text-3xl mb-16 font-bold">หน้าหลัก</p>
             <div>
                 <div className="grid lg:grid-cols-3 gap-5 mb-16">
                         <div className="rounded bg-white h-40 shadow-sm">
@@ -69,19 +69,19 @@ export default function Dashboard() {
                             <div>
                                 <div className="mt-2 ml-4 inline-flex items-center justify-center rounded-lg text-lg text-center sm:w-auto">
                                     ⤷ 
-                                    เข้าใช้บริการแล้ว {studentData.oldMonth} ครั้ง
+                                    เข้าใช้บริการแล้ว {studentData.total} ครั้ง
                                 </div>
                             </div>
                         </div>
                         <div className="rounded bg-white h-40 shadow-sm">
                             <div className="mt-4 ml-4 inline-flex items-center justify-center rounded-lg text-lg text-center sm:w-auto">
                                 <ChevronDoubleRightIcon className="h-5 w-5" />
-                                กรุณาลงข้อมูล !
+                                กรุณาลงทะเบียน !
                             </div>
                             <div className="mt-2 ml-4">
                               <button onClick={leaveClick} type="button" className="w-1/2 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto">
                                   <FiLink className="mr-2 h-5 w-5"/>
-                                  ลงข้อมูลที่นี่
+                                  ลงทะเบียนที่นี่
                               </button>
                                 
                                 <FormModal name={studentData.name} surname={studentData.surname} month={studentData.oldMonth} />
@@ -98,13 +98,10 @@ export default function Dashboard() {
             <div className="rounded bg-white h-96 shadow-sm">
                 <div className="inline-flex items-center justify-center mt-4 ml-4 text-lg">
                     <div className="text-red-700">[</div><div className="text-blue-700">LOG</div><div className="text-red-700">]</div><div className="mr-1">:</div>
-                    Update 1.1
+                    Update 1.1.1
                 </div>
                 <div className="mt-1 ml-9 text-lg">
-                ⤷ เพิ่มเมนูการตั้งค่า
-                </div>
-                <div className="mt-1 ml-9 text-lg">
-                ⤷ แก้ปัญหาเรื่องเวลาในไลน์
+                ⤷ เปลี่ยนการใช้คำ
                 </div>
             </div>    
         </PageContainer>
