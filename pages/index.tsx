@@ -98,10 +98,10 @@ export default function Dashboard() {
             <div className="rounded bg-white h-96 shadow-sm">
                 <div className="inline-flex items-center justify-center mt-4 ml-4 text-lg">
                     <div className="text-red-700">[</div><div className="text-blue-700">LOG</div><div className="text-red-700">]</div><div className="mr-1">:</div>
-                    Update 1.1.1
+                    Update 1.1.2
                 </div>
                 <div className="mt-1 ml-9 text-lg">
-                ⤷ เปลี่ยนการใช้คำ
+                ⤷ ปรับเปลี่ยนการลงข้อมูล
                 </div>
             </div>    
         </PageContainer>

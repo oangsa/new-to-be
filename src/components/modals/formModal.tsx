@@ -12,18 +12,27 @@ interface leaveModal {
 }
 
 interface leaveFrom {
-    other: string
+    other: string,
+    reason: string
 }
 
 const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
     const router: NextRouter = useRouter()
 
     const [data, setData] = useState<leaveFrom>({
+        reason: "",
         other: ""
     })
 
-    
+    const reason = data.reason === "อื่นๆ" ? data.other : data.reason
+
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        console.log(name, value)
+        setData((prev) => ({...prev, [name]: value}))
+    }
+
+    const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target
         console.log(name, value)
         setData((prev) => ({...prev, [name]: value}))
@@ -62,7 +71,7 @@ const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({other: data.other, name: name, surname: surname, oldMonth: month}),
+            body: JSON.stringify({other: reason, name: name, surname: surname, oldMonth: month}),
         })
 
         console.log(await res.json())
@@ -121,11 +130,26 @@ const FormModal: FC<leaveModal> = ({ name, surname, month }) => {
                                     <input disabled value={surname} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ประยุทธ์" required />
                                 </div>
                             </div>
-                            <div className="grid gap-4 mb-4 sm:grid-cols-1"> 
-                                <div>
-                                    <label htmlFor="other" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระบุเหตุผล</label>
+                            <div className="grid gap-4 mb-4 sm:grid-cols-1">
+                                <label htmlFor="reason" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reason</label>
+                                <select onChange={handleSelect} value={data.reason} name="reason" id="reason" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option disabled>เลือกเหตุผล</option>
+                                    <option value="ปรับทุกข์">ปรับทุกข์</option>
+                                    <option value="สร้างสุข">สร้างสุข</option>
+                                    <option value="แก้ไขปัญหา">แก้ไขปัญหา</option>
+                                    <option value="พัฒนา EQ">พัฒนา EQ</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
+                                </select> 
+                            </div>
+                            <div className="grid gap-4 mb-4 sm:grid-cols-1">
+                                { data.reason !== "อื่นๆ" ? "" : 
+                                    <p>
+                                        <div>
+                                        <label htmlFor="other" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระบุเหตุผล</label>
                                     <input value={data.other} onChange={handleInput} type="text" name="other" id="other" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ติดเกม..." required />
-                                </div>
+                                        </div>
+                                    </p>
+                                }
                             </div>
                         </form>
                         <button onClick={submit} type="submit" className="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
